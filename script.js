@@ -1,138 +1,236 @@
-// Menu Toggle Mobile
+// ============================================
+// NAVIGATION - Menu Toggle
+// ============================================
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 
-menuToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
 
-  // Animar hamburguesa
-  const spans = menuToggle.querySelectorAll("span");
-  if (navMenu.classList.contains("active")) {
-    spans[0].style.transform = "rotate(45deg) translate(7px, 7px)";
-    spans[1].style.opacity = "0";
-    spans[2].style.transform = "rotate(-45deg) translate(7px, -7px)";
-  } else {
-    spans[0].style.transform = "none";
-    spans[1].style.opacity = "1";
-    spans[2].style.transform = "none";
-  }
-});
+    // Animate hamburger icon
+    const spans = menuToggle.querySelectorAll("span");
+    if (navMenu.classList.contains("active")) {
+      spans[0].style.transform = "rotate(45deg) translateY(8px)";
+      spans[1].style.opacity = "0";
+      spans[2].style.transform = "rotate(-45deg) translateY(-8px)";
+    } else {
+      spans[0].style.transform = "none";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "none";
+    }
+  });
+}
 
-// Cerrar menu al hacer click en un link
-const navLinks = document.querySelectorAll(".nav-menu a");
+// Close menu when clicking on a link
+const navLinks = document.querySelectorAll(".nav-link");
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navMenu.classList.remove("active");
-    const spans = menuToggle.querySelectorAll("span");
-    spans[0].style.transform = "none";
-    spans[1].style.opacity = "1";
-    spans[2].style.transform = "none";
+    if (navMenu.classList.contains("active")) {
+      navMenu.classList.remove("active");
+      const spans = menuToggle.querySelectorAll("span");
+      spans[0].style.transform = "none";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "none";
+    }
   });
 });
 
-// Smooth Scroll para navegación
+// ============================================
+// NAVIGATION - Scroll Effect
+// ============================================
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 100) {
+    navbar.style.padding = "0.5rem 0";
+    navbar.style.backgroundColor = "rgba(10, 10, 10, 0.98)";
+  } else {
+    navbar.style.padding = "1rem 0";
+    navbar.style.backgroundColor = "rgba(10, 10, 10, 0.95)";
+  }
+});
+
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
-      const offsetTop = target.offsetTop - 80; // Altura del navbar
+      const navbarHeight = document.querySelector(".navbar").offsetHeight;
+      const targetPosition = target.offsetTop - navbarHeight;
+
       window.scrollTo({
-        top: offsetTop,
+        top: targetPosition,
         behavior: "smooth",
       });
     }
   });
 });
 
-// Navbar transparente/sólido al hacer scroll
-window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 100) {
-    navbar.style.background = "rgba(0, 0, 0, 0.98)";
-  } else {
-    navbar.style.background = "rgba(0, 0, 0, 0.95)";
-  }
-});
-
-// Formulario de Contacto
+// ============================================
+// FORM VALIDATION & SUBMISSION
+// ============================================
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  const submitButton = contactForm.querySelector('button[type="submit"]');
-  const originalButtonText = submitButton.textContent;
+    // Get form values
+    const formData = {
+      nombre: document.getElementById("nombre").value,
+      email: document.getElementById("email").value,
+      telefono: document.getElementById("telefono").value,
+      programa: document.getElementById("programa").value,
+      mensaje: document.getElementById("mensaje").value,
+    };
 
-  // Obtener datos del formulario
-  const formData = {
-    nombre: document.getElementById("nombre").value,
-    email: document.getElementById("email").value,
-    telefono: document.getElementById("telefono").value,
-    programa: document.getElementById("programa").value,
-    mensaje: document.getElementById("mensaje").value,
-  };
-
-  // Validación básica
-  if (
-    !formData.nombre ||
-    !formData.email ||
-    !formData.telefono ||
-    !formData.programa
-  ) {
-    alert("Por favor completá todos los campos obligatorios.");
-    return;
-  }
-
-  // Validar email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(formData.email)) {
-    alert("Por favor ingresá un email válido.");
-    return;
-  }
-
-  // Cambiar botón a estado "enviando"
-  submitButton.textContent = "Enviando...";
-  submitButton.disabled = true;
-
-  try {
-    // IMPORTANTE: Reemplazar con tu endpoint de Formspree
-    // Crealo en https://formspree.io - es gratis
-    const formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
-
-    const response = await fetch(formspreeEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      // Éxito
-      alert("¡Mensaje enviado! Te contactaremos en menos de 24hs. 💪");
-      contactForm.reset();
-
-      // Redirigir a WhatsApp (opcional)
-      const whatsappMessage = encodeURIComponent(
-        `Hola! Me llamo ${formData.nombre}. Quiero información sobre ${formData.programa}.`
+    // Basic validation
+    if (
+      !formData.nombre ||
+      !formData.email ||
+      !formData.telefono ||
+      !formData.programa
+    ) {
+      showNotification(
+        "Por favor completá todos los campos obligatorios",
+        "error"
       );
-      // window.location.href = `https://wa.me/5493413000000?text=${whatsappMessage}`;
-    } else {
-      throw new Error("Error al enviar");
+      return;
     }
-  } catch (error) {
-    console.error("Error:", error);
-    alert(
-      "Hubo un error al enviar el mensaje. Por favor intentá de nuevo o contactanos por WhatsApp."
-    );
-  } finally {
-    submitButton.textContent = originalButtonText;
-    submitButton.disabled = false;
-  }
-});
 
-// Animación al hacer scroll (Intersection Observer)
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      showNotification("Por favor ingresá un email válido", "error");
+      return;
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^[0-9\s\-\+\(\)]+$/;
+    if (!phoneRegex.test(formData.telefono)) {
+      showNotification("Por favor ingresá un teléfono válido", "error");
+      return;
+    }
+
+    // Simulate form submission
+    const submitButton = contactForm.querySelector(".btn-submit");
+    const originalText = submitButton.textContent;
+    submitButton.textContent = "Enviando...";
+    submitButton.disabled = true;
+
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Form Data:", formData);
+
+      // Redirect to WhatsApp with pre-filled message
+      const whatsappMessage = `Hola! Me gustaría solicitar una clase gratis.
+            
+Nombre: ${formData.nombre}
+Email: ${formData.email}
+Teléfono: ${formData.telefono}
+Programa: ${formData.programa}
+${formData.mensaje ? `Mensaje: ${formData.mensaje}` : ""}`;
+
+      const whatsappURL = `https://wa.me/5493413000000?text=${encodeURIComponent(
+        whatsappMessage
+      )}`;
+
+      showNotification(
+        "¡Formulario enviado! Redirigiendo a WhatsApp...",
+        "success"
+      );
+
+      setTimeout(() => {
+        window.open(whatsappURL, "_blank");
+        contactForm.reset();
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+      }, 1500);
+    }, 1000);
+  });
+}
+
+// ============================================
+// NOTIFICATION SYSTEM
+// ============================================
+function showNotification(message, type = "info") {
+  // Remove existing notifications
+  const existingNotification = document.querySelector(".notification");
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+
+  // Create notification element
+  const notification = document.createElement("div");
+  notification.className = `notification notification-${type}`;
+  notification.textContent = message;
+
+  // Add styles
+  notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background-color: ${
+          type === "success"
+            ? "#10b981"
+            : type === "error"
+            ? "#ef4444"
+            : "#3b82f6"
+        };
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+        max-width: 350px;
+        font-weight: 600;
+    `;
+
+  document.body.appendChild(notification);
+
+  // Remove after 4 seconds
+  setTimeout(() => {
+    notification.style.animation = "slideOutRight 0.3s ease";
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, 4000);
+}
+
+// Add animation keyframes
+const style = document.createElement("style");
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -100px 0px",
@@ -147,49 +245,199 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observar elementos para animación
-document
-  .querySelectorAll(
-    ".program-card, .trainer-card, .transformation-card, .pricing-card"
-  )
-  .forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
-    observer.observe(el);
+// Observe elements for animation
+const animateElements = document.querySelectorAll(
+  ".program-card, .trainer-card, .result-card, .pricing-card, .contact-info-card"
+);
+animateElements.forEach((el) => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(30px)";
+  el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+  observer.observe(el);
+});
+
+// ============================================
+// COUNTER ANIMATION (for stats)
+// ============================================
+function animateCounter(element, target, duration = 2000) {
+  const start = 0;
+  const increment = target / (duration / 16);
+  let current = start;
+
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    element.textContent = Math.floor(current);
+  }, 16);
+}
+
+// ============================================
+// PRICING CARD HIGHLIGHT
+// ============================================
+const pricingCards = document.querySelectorAll(".pricing-card");
+pricingCards.forEach((card) => {
+  card.addEventListener("mouseenter", () => {
+    pricingCards.forEach((c) => {
+      if (c !== card) {
+        c.style.opacity = "0.7";
+      }
+    });
   });
 
-// Contador de visitas (opcional - guardar en localStorage)
-let visitCount = localStorage.getItem("visitCount") || 0;
-visitCount++;
-localStorage.setItem("visitCount", visitCount);
-console.log(`Visitas: ${visitCount}`);
+  card.addEventListener("mouseleave", () => {
+    pricingCards.forEach((c) => {
+      c.style.opacity = "1";
+    });
+  });
+});
 
-// Google Analytics (agregar tu ID)
-// window.dataLayer = window.dataLayer || [];
-// function gtag(){dataLayer.push(arguments);}
-// gtag('js', new Date());
-// gtag('config', 'G-XXXXXXXXXX');
+// ============================================
+// LAZY LOADING IMAGES
+// ============================================
+if ("IntersectionObserver" in window) {
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src || img.src;
+        img.classList.add("loaded");
+        observer.unobserve(img);
+      }
+    });
+  });
 
-// Preloader opcional
-window.addEventListener("load", () => {
+  const images = document.querySelectorAll("img[data-src]");
+  images.forEach((img) => imageObserver.observe(img));
+}
+
+// ============================================
+// PARALLAX EFFECT (Hero Section)
+// ============================================
+window.addEventListener("scroll", () => {
+  const scrolled = window.pageYOffset;
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    hero.style.backgroundPositionY = scrolled * 0.5 + "px";
+  }
+});
+
+// ============================================
+// ACTIVE NAVIGATION LINK
+// ============================================
+window.addEventListener("scroll", () => {
+  let current = "";
+  const sections = document.querySelectorAll("section[id]");
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - 100) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// ============================================
+// INITIALIZE ON LOAD
+// ============================================
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("BLOC Gym Website Loaded Successfully! 💪");
+
+  // Add fade-in animation to body
   document.body.style.opacity = "0";
   setTimeout(() => {
-    document.body.style.transition = "opacity 0.3s";
+    document.body.style.transition = "opacity 0.5s ease";
     document.body.style.opacity = "1";
   }, 100);
 });
 
-// Prevenir zoom en mobile (opcional)
-document.addEventListener("gesturestart", function (e) {
-  e.preventDefault();
+// ============================================
+// PREVENT FORM RESUBMISSION ON REFRESH
+// ============================================
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
+
+// ============================================
+// SCROLL TO TOP BUTTON (Optional)
+// ============================================
+const scrollToTopButton = document.createElement("button");
+scrollToTopButton.innerHTML = "↑";
+scrollToTopButton.className = "scroll-to-top";
+scrollToTopButton.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-yellow);
+    color: var(--dark-bg);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+`;
+
+document.body.appendChild(scrollToTopButton);
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 300) {
+    scrollToTopButton.style.opacity = "1";
+    scrollToTopButton.style.visibility = "visible";
+  } else {
+    scrollToTopButton.style.opacity = "0";
+    scrollToTopButton.style.visibility = "hidden";
+  }
 });
 
-console.log(
-  "%c💪 BLOC GIMNASIO 💪",
-  "font-size: 20px; font-weight: bold; color: #FDB913;"
-);
-console.log(
-  "%cEntrenamiento Personalizado - Rosario, Argentina",
-  "font-size: 12px; color: #FFF;"
-);
+scrollToTopButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+// ============================================
+// PERFORMANCE MONITORING (Development)
+// ============================================
+if (window.performance) {
+  window.addEventListener("load", () => {
+    const perfData = window.performance.timing;
+    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+    console.log(`Page Load Time: ${pageLoadTime}ms`);
+  });
+}
+
+// ============================================
+// ERROR HANDLING
+// ============================================
+window.addEventListener("error", (e) => {
+  console.error("Error occurred:", e.error);
+});
+
+// ============================================
+// RESIZE HANDLER
+// ============================================
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    // Handle any resize-specific logic here
+    console.log("Window resized");
+  }, 250);
+});
