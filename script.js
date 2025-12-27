@@ -108,3 +108,54 @@ document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
 });
 
 console.log("🏋️ BLOC Gym - Website cargado correctamente");
+// ========================================
+// ANIMACIÓN DE CONTEO DE NÚMEROS EN STATS
+// ========================================
+
+function animateNumbers() {
+  const statNumbers = document.querySelectorAll(".stat-number");
+
+  statNumbers.forEach((stat) => {
+    const target = parseInt(stat.getAttribute("data-target"));
+    const isPercent = stat.classList.contains("stat-percent");
+    const duration = 2000; // 2 segundos
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+
+    const updateCount = () => {
+      current += increment;
+
+      if (current < target) {
+        stat.textContent = Math.floor(current) + (isPercent ? "%" : "");
+        stat.classList.add("counting");
+        requestAnimationFrame(updateCount);
+      } else {
+        stat.textContent = target + (isPercent ? "%" : "");
+        stat.classList.remove("counting");
+      }
+    };
+
+    updateCount();
+  });
+}
+
+// Iniciar animación cuando el usuario llega a los stats
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateNumbers();
+        statsObserver.unobserve(entry.target); // Solo animar una vez
+      }
+    });
+  },
+  {
+    threshold: 0.5, // Activar cuando el 50% de los stats sean visibles
+  }
+);
+
+// Observar la sección de stats
+const heroStats = document.querySelector(".hero-stats");
+if (heroStats) {
+  statsObserver.observe(heroStats);
+}

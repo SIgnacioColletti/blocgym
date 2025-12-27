@@ -298,6 +298,54 @@ body {
   padding-top: 60px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+/* ANIMACIONES PARA STATS */
+.stat-number {
+  transition: transform 0.3s ease;
+}
+
+.stat:hover .stat-number {
+  transform: scale(1.1);
+}
+
+.stat-number.counting {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Animación de entrada */
+.stat {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stat:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.stat:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.stat:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .stat {
   text-align: center;
