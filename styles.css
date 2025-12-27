@@ -9,10 +9,10 @@
   --gold: #ebdd18; /* Amarillo/dorado principal */
   --black: #000000; /* Negro */
   --yellow: #fbbf24; /* Amarillo más claro para hover */
-  --gray: #1f2937; /* Gris oscuro */
+  --gray: #222b38; /* Gris oscuro */
   --gray-light: #f9fafb; /* Gris muy claro */
-  --gray-medium: #6b7280; /* Gris medio */
-  --gray-dark: #111827; /* Gris casi negro */
+  --gray-medium: #ffffff; /* Gris medio */
+  --gray-dark: #141414; /* Gris casi negro */
 }
 
 html {
@@ -52,7 +52,7 @@ body {
   font-size: 2.5rem;
   font-weight: 900;
   margin-bottom: 16px;
-  color: white;
+  color: #ebdd18;
 }
 
 .section-subtitle {
@@ -159,7 +159,7 @@ body {
 .btn-primary:hover {
   background: #fbbf24;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 10px 25px rgba(235, 221, 24, 0.4);
 }
 
 .btn-secondary {
@@ -198,7 +198,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("images/dominadas.jpg");
+  background-image: url("img/dominadas.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.4;
@@ -220,7 +220,9 @@ body {
   z-index: 10;
   max-width: 800px;
   padding: 150px 0 100px;
-} /* LOGO EN HERO - VERSIÓN PEQUEÑA */
+}
+
+/* LOGO EN HERO - VERSIÓN PEQUEÑA */
 .hero-logo {
   margin-bottom: 20px;
   text-align: center;
@@ -231,7 +233,7 @@ body {
   max-width: 250px;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 8px 20px rgba(245, 158, 11, 0.4));
+  filter: drop-shadow(0 8px 20px rgba(235, 221, 24, 0.5));
 }
 
 @keyframes fadeInDown {
@@ -260,7 +262,7 @@ body {
 
 .badge {
   display: inline-block;
-  background: rgba(245, 158, 11, 0.2);
+  background: rgba(235, 221, 24, 0.2);
   border: 2px solid var(--gold);
   padding: 8px 20px;
   border-radius: 50px;
@@ -298,6 +300,7 @@ body {
   padding-top: 60px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 /* ANIMACIONES PARA STATS */
 .stat-number {
   transition: transform 0.3s ease;
@@ -326,6 +329,7 @@ body {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.6s ease-out forwards;
+  text-align: center;
 }
 
 .stat:nth-child(1) {
@@ -345,10 +349,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.stat {
-  text-align: center;
 }
 
 .stat-number {
@@ -415,24 +415,58 @@ body {
   gap: 30px;
 }
 
-/* CARDS */
+/* CARDS CON ANIMACIONES MEJORADAS */
 .card {
   background: rgba(255, 255, 255, 0.05);
   padding: 40px 30px;
   border-radius: 16px;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Efecto de brillo dorado en hover */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(235, 221, 24, 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(245, 158, 11, 0.3);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(235, 221, 24, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+  border-color: rgba(235, 221, 24, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Animación del icono */
+.card:hover .card-icon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 15px rgba(235, 221, 24, 0.6));
 }
 
 .card-icon {
   font-size: 3rem;
   margin-bottom: 20px;
+  transition: all 0.4s ease;
+  display: inline-block;
 }
 
 .card-title {
@@ -440,25 +474,59 @@ body {
   font-weight: 700;
   margin-bottom: 15px;
   color: white;
+  transition: color 0.3s ease;
+}
+
+.card:hover .card-title {
+  color: var(--gold);
 }
 
 .card-text {
   color: var(--gray-medium);
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
-/* EQUIPO */
+.card:hover .card-text {
+  color: #d1d5db;
+}
+
+/* EQUIPO CON ANIMACIONES MEJORADAS */
 .team-card {
   text-align: center;
   background: rgba(255, 255, 255, 0.05);
   padding: 40px 30px;
   border-radius: 16px;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Efecto de línea dorada arriba */
+.team-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transition: width 0.4s ease;
+}
+
+.team-card:hover::after {
+  width: 100%;
 }
 
 .team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 30px 60px rgba(235, 221, 24, 0.3),
+    0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: rgba(235, 221, 24, 0.6);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .team-photo {
@@ -468,6 +536,14 @@ body {
   border-radius: 50%;
   overflow: hidden;
   background: var(--gold);
+  transition: all 0.4s ease;
+  border: 4px solid transparent;
+}
+
+.team-card:hover .team-photo {
+  transform: scale(1.1) rotate(5deg);
+  border-color: var(--gold);
+  box-shadow: 0 10px 30px rgba(235, 221, 24, 0.5);
 }
 
 .team-placeholder {
@@ -479,6 +555,11 @@ body {
   font-size: 2.5rem;
   font-weight: 900;
   color: var(--black);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-placeholder {
+  transform: scale(1.2);
 }
 
 .team-name {
@@ -486,23 +567,39 @@ body {
   font-weight: 700;
   margin-bottom: 8px;
   color: white;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-name {
+  color: var(--gold);
+  transform: translateY(-3px);
 }
 
 .team-role {
   color: var(--gold);
   font-weight: 600;
   margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-role {
+  letter-spacing: 1px;
 }
 
 .team-bio {
   color: var(--gray-medium);
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
-/* GALERÍA */
+.team-card:hover .team-bio {
+  color: #d1d5db;
+}
+
+/* GALERÍA CON ANIMACIONES MEJORADAS */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas en desktop */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -510,48 +607,79 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  aspect-ratio: 1/1; /* Hace que las imágenes sean cuadradas */
+  aspect-ratio: 1/1;
   cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+/* Overlay oscuro que se ilumina al hover */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(235, 221, 24, 0.3) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(235, 221, 24, 0.35),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  z-index: 10;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
+  transition: transform 0.5s ease;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.2) rotate(2deg);
 }
 
 /* RESPONSIVE PARA GALERÍA */
 @media (max-width: 1024px) {
   .gallery {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets pequeñas */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .gallery {
-    grid-template-columns: 1fr; /* 1 columna en mobile */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
 
   .gallery-item {
-    max-width: 300px; /* Limita el ancho máximo en mobile para que no sean gigantes */
-    margin: 0 auto; /* Centra las imágenes */
-    aspect-ratio: 4/3; /* Cambia la proporción en mobile para aprovechar mejor el espacio */
+    max-width: 300px;
+    margin: 0 auto;
+    aspect-ratio: 4/3;
   }
 }
-/* PRICING */
+
+/* PRICING CON ANIMACIONES MEJORADAS */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -567,17 +695,52 @@ body {
   text-align: center;
   border: 2px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Efecto de resplandor */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(235, 221, 24, 0.2) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.pricing-card:hover::before {
+  width: 500px;
+  height: 500px;
 }
 
 .pricing-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(235, 221, 24, 0.35),
+    0 15px 30px rgba(0, 0, 0, 0.6);
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .pricing-featured {
   border-color: var(--gold);
   transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pricing-featured:hover {
+  transform: scale(1.1) translateY(-15px);
+  box-shadow: 0 40px 80px rgba(235, 221, 24, 0.45),
+    0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
 .pricing-badge {
@@ -591,6 +754,12 @@ body {
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .pricing-badge {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 5px 15px rgba(235, 221, 24, 0.6);
 }
 
 .pricing-title {
@@ -598,10 +767,21 @@ body {
   font-weight: 700;
   margin-bottom: 20px;
   color: white;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .pricing-title {
+  color: var(--gold);
+  transform: scale(1.05);
 }
 
 .pricing-price {
   margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:hover .pricing-price {
+  transform: scale(1.1);
 }
 
 .price-currency {
@@ -632,6 +812,12 @@ body {
   font-weight: 700;
   margin-bottom: 20px;
   font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .pricing-discount {
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(235, 221, 24, 0.6);
 }
 
 .pricing-features {
@@ -644,6 +830,12 @@ body {
   padding: 12px 0;
   color: #d1d5db;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .pricing-features li {
+  padding-left: 10px;
+  color: white;
 }
 
 /* CONTACTO */
@@ -805,7 +997,7 @@ body {
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
   z-index: 999;
   transition: all 0.3s;
-  animation: pulse 2s infinite;
+  animation: whatsappPulse 2s infinite;
 }
 
 .whatsapp-float:hover {
@@ -813,7 +1005,7 @@ body {
   box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
 }
 
-@keyframes pulse {
+@keyframes whatsappPulse {
   0%,
   100% {
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
@@ -876,10 +1068,6 @@ body {
     padding: 60px 0;
   }
 
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-
   .whatsapp-float {
     bottom: 20px;
     right: 20px;
@@ -900,9 +1088,5 @@ body {
 
   .stat-number {
     font-size: 2.5rem;
-  }
-
-  .gallery {
-    grid-template-columns: 1fr;
   }
 }
