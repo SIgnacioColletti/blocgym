@@ -1,417 +1,412 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOC Gym Rosario - Entrenamiento con Pesos Libres | Profesores Certificados</title>
     <meta name="description"
-        content="BLOC Gimnasio - Entrenamiento personalizado en Rosario. Primera clase gratis. Musculación, CrossFit, HIIT y más.">
-    <title>BLOC Gimnasio | Entrenamiento Personalizado Rosario</title>
+        content="Gimnasio en Rosario especializado en pesos libres y entrenamiento funcional. Entrenadores certificados, clases personalizadas, equipamiento profesional. ¡Probá una clase gratis!">
+    <link rel="icon" type="image/png" href="img/logo-bloc.png">
+    <link rel="apple-touch-icon" href="img/logo-bloc.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <span class="logo-bloc">BLOC</span>
-                <span class="logo-subtitle">GIMNASIO</span>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#hero" class="logo">
+                    <span class="logo-white">BL</span><span class="logo-gold">OC</span>
+                </a>
+
+                <div class="nav-links" id="navLinks">
+                    <a href="#hero" class="nav-link">Inicio</a>
+                    <a href="#beneficios" class="nav-link">Beneficios</a>
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                    <a href="#equipo" class="nav-link">Equipo</a>
+                    <a href="#galeria" class="nav-link">Galería</a>
+                    <a href="#planes" class="nav-link">Planes</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="https://wa.me/5493412563609" class="btn btn-primary">Empezá Hoy</a>
+                </div>
+
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#programas" class="nav-link">Programas</a></li>
-                <li><a href="#entrenadores" class="nav-link">Entrenadores</a></li>
-                <li><a href="#planes" class="nav-link">Planes</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                <li><a href="#contacto" class="nav-link btn-cta">Clase Gratis</a></li>
-            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 class="hero-title">TRANSFORMÁ TU CUERPO<br>TRANSFORMÁ TU VIDA</h1>
-            <p class="hero-subtitle">Entrenamiento personalizado con profesionales certificados.<br>Primera clase
-                gratis. Inscripciones abiertas.</p>
-            <div class="hero-buttons">
-                <a href="#contacto" class="btn btn-primary">Empezar Ahora</a>
-                <a href="#programas" class="btn btn-secondary">Ver Programas</a>
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="badge">
+                    🏋️ Gimnasio en Villa Gobernador Galvez
+                </div>
+
+                <h1 class="hero-title">
+                    TRANSFORMÁ TU CUERPO,<br>
+                    <span class="text-gold">ELEVÁ TU NIVEL</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Entrenamiento con pesos libres, profesores certificados y un ambiente que te motiva a superar tus
+                    límites
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary btn-large">
+                        Probá una Clase Gratis →
+                    </a>
+                    <a href="#planes" class="btn btn-secondary btn-large">
+                        Ver Planes
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Entrenadores Pro</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10%</div>
+                        <div class="stat-label">OFF en 3 meses</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Clase Gratis</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="scroll-indicator">
-            <span></span>
+            <div class="mouse"></div>
         </div>
     </section>
 
-    <!-- Programs Section -->
-    <section id="programas" class="programs">
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nuestros Programas</h2>
-                <p class="section-subtitle">Elegí el entrenamiento que mejor se adapte a tus objetivos</p>
+                <h2 class="section-title">¿Por qué elegir BLOC?</h2>
+                <p class="section-subtitle">Las razones que nos hacen únicos en Rosario</p>
             </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-icon">💪</div>
-                    <h3 class="program-title">Musculación</h3>
-                    <p class="program-description">Desarrollo muscular y fuerza con equipamiento profesional y
-                        seguimiento personalizado.</p>
+            <div class="grid-4">
+                <div class="card">
+                    <div class="card-icon">🏋️</div>
+                    <h3 class="card-title">Equipamiento Profesional</h3>
+                    <p class="card-text">Pesos libres, máquinas RHINO de última generación y equipamiento TRX para
+                        entrenamiento funcional</p>
                 </div>
-                <div class="program-card">
-                    <div class="program-icon">🔥</div>
-                    <h3 class="program-title">Funcional</h3>
-                    <p class="program-description">Entrenamiento de alta intensidad para mejorar resistencia, agilidad y
-                        quemar grasa.</p>
+                <div class="card">
+                    <div class="card-icon">👨‍🏫</div>
+                    <h3 class="card-title">Entrenadores Certificados</h3>
+                    <p class="card-text">Profesores formados en ISEF N°11 e Instituto Immanuel Kant con años de
+                        experiencia</p>
                 </div>
-                <div class="program-card">
-                    <div class="program-icon">🎯</div>
-                    <h3 class="program-title">Personalizado</h3>
-                    <p class="program-description">Plan diseñado exclusivamente para vos según tus objetivos y
-                        necesidades específicas.</p>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Programas Personalizados</h3>
+                    <p class="card-text">Rutinas diseñadas específicamente para tus objetivos: pérdida de peso, ganancia
+                        muscular o fuerza</p>
                 </div>
-                <div class="program-card">
-                    <div class="program-icon">🏃</div>
-                    <h3 class="program-title">CrossFit</h3>
-                    <p class="program-description">Movimientos funcionales de alta intensidad constantemente variados.
-                    </p>
-                </div>
-                <div class="program-card">
-                    <div class="program-icon">🧘</div>
-                    <h3 class="program-title">Movilidad</h3>
-                    <p class="program-description">Mejorá tu flexibilidad, prevení lesiones y optimizá tu rendimiento.
-                    </p>
-                </div>
-                <div class="program-card">
-                    <div class="program-icon">⚡</div>
-                    <h3 class="program-title">HIIT</h3>
-                    <p class="program-description">Entrenamiento por intervalos de alta intensidad para máximos
-                        resultados en menos tiempo.</p>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Clases Reducidas</h3>
+                    <p class="card-text">Atención personalizada en grupos pequeños para maximizar tu rendimiento y
+                        progreso</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trainers Section -->
-    <section id="entrenadores" class="trainers">
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Encontrá el entrenamiento perfecto para vos</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3 class="card-title">Entrenamiento Personalizado</h3>
+                    <p class="card-text">Sesiones 1 a 1 con tu entrenador personal. Seguimiento completo y rutina
+                        adaptada a tus necesidades.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Clases de Circuitos</h3>
+                    <p class="card-text">Grupos reducidos enfocados en pérdida de peso y tonificación. Quemá calorías
+                        mientras te divertís.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Taller de Dominadas</h3>
+                    <p class="card-text">Aprendé la técnica correcta y progresá desde cero hasta hacer tus primeras
+                        dominadas completas.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Taller de Musculación</h3>
+                    <p class="card-text">Dominá los ejercicios básicos: sentadillas, press de banca, peso muerto y press
+                        militar.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Programas Pre-armados</h3>
+                    <p class="card-text">Rutinas diseñadas por objetivos: fuerza, hipertrofia, resistencia o pérdida de
+                        grasa.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Entrenamiento Libre</h3>
+                    <p class="card-text">Acceso al gym en los horarios disponibles con supervisión de nuestros
+                        entrenadores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" class="section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nuestro Equipo</h2>
                 <p class="section-subtitle">Profesionales certificados dedicados a tu progreso</p>
             </div>
-            <div class="trainers-grid">
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=500&fit=crop"
-                            alt="Entrenador 1">
+            <div class="grid-3">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="team-placeholder">CM</div>
                     </div>
-                    <div class="trainer-info">
-                        <h3 class="trainer-name">Matías Fernández</h3>
-                        <p class="trainer-role">Entrenador Principal</p>
-                        <p class="trainer-bio">Especialista en musculación y preparación física. +8 años de experiencia.
-                        </p>
-                    </div>
+                    <h3 class="team-name">Camila Moreno</h3>
+                    <p class="team-role">Profesora de Musculación y Circuitos</p>
+                    <p class="team-bio">Formada en ISEF N°11. Especialista en entrenamiento funcional y pérdida de peso.
+                    </p>
                 </div>
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&h=500&fit=crop"
-                            alt="Entrenadora 2">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="team-placeholder">EP</div>
                     </div>
-                    <div class="trainer-info">
-                        <h3 class="trainer-name">Carolina López</h3>
-                        <p class="trainer-role">Entrenadora Funcional</p>
-                        <p class="trainer-bio">Certificada en CrossFit y entrenamiento funcional. Nutrición deportiva.
-                        </p>
-                    </div>
+                    <h3 class="team-name">Ezequiel Polverini</h3>
+                    <p class="team-role">Coordinador y Profesor de Musculación</p>
+                    <p class="team-bio">Formado en Instituto Immanuel Kant. Coordinador general del gimnasio.</p>
                 </div>
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1567598508481-65985588e295?w=400&h=500&fit=crop"
-                            alt="Entrenador 3">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="team-placeholder">IM</div>
                     </div>
-                    <div class="trainer-info">
-                        <h3 class="trainer-name">Lucas Rodríguez</h3>
-                        <p class="trainer-role">Entrenador HIIT</p>
-                        <p class="trainer-bio">Especialista en alto rendimiento y preparación física integral.</p>
-                    </div>
+                    <h3 class="team-name">Iván Martinelli</h3>
+                    <p class="team-role">Profesor de Musculación</p>
+                    <p class="team-bio">Formado en Instituto Immanuel Kant. Especialista en técnica y fuerza.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Results Section -->
-    <section class="results">
+    <!-- GALERÍA -->
+    <section id="galeria" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Resultados Reales</h2>
-                <p class="section-subtitle">Historias de transformación de nuestros miembros</p>
+                <h2 class="section-title">Nuestras Instalaciones</h2>
+                <p class="section-subtitle">Conocé dónde vas a entrenar</p>
             </div>
-            <div class="results-grid">
-                <div class="result-card">
-                    <div class="result-images">
-                        <div class="result-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300&h=400&fit=crop"
-                                alt="Antes">
-                            <span class="result-label">Antes</span>
-                        </div>
-                        <div class="result-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=300&h=400&fit=crop"
-                                alt="Después">
-                            <span class="result-label">Después</span>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <h4 class="result-name">Juan - 28 años</h4>
-                        <p class="result-quote">"Perdí 15kg en 4 meses. El equipo de BLOC me cambió la vida."</p>
-                        <div class="result-stats">
-                            <span class="stat">⏱️ 4 meses</span>
-                            <span class="stat">📉 -15kg</span>
-                        </div>
-                    </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="img//gim1.jpg" alt="Instalaciones BLOC Gym" loading="lazy">
                 </div>
-                <div class="result-card">
-                    <div class="result-images">
-                        <div class="result-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=400&fit=crop"
-                                alt="Antes">
-                            <span class="result-label">Antes</span>
-                        </div>
-                        <div class="result-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1550345332-09e3ac987658?w=300&h=400&fit=crop"
-                                alt="Después">
-                            <span class="result-label">Después</span>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <h4 class="result-name">Sofía - 32 años</h4>
-                        <p class="result-quote">"Gané masa muscular y confianza. Mejor inversión que hice."</p>
-                        <div class="result-stats">
-                            <span class="stat">⏱️ 6 meses</span>
-                            <span class="stat">📈 +8kg músculo</span>
-                        </div>
-                    </div>
+                <div class="gallery-item">
+                    <img src="img//biceps.jpg" alt="Entrenamiento de bíceps" loading="lazy">
                 </div>
-                <div class="result-card">
-                    <div class="result-images">
-                        <div class="result-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=300&h=400&fit=crop"
-                                alt="Antes">
-                            <span class="result-label">Antes</span>
-                        </div>
-                        <div class="result-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&h=400&fit=crop"
-                                alt="Después">
-                            <span class="result-label">Después</span>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <h4 class="result-name">Martín - 45 años</h4>
-                        <p class="result-quote">"Recuperé mi forma física después de años. Increíble."</p>
-                        <div class="result-stats">
-                            <span class="stat">⏱️ 5 meses</span>
-                            <span class="stat">📉 -12kg</span>
-                        </div>
-                    </div>
+                <div class="gallery-item">
+                    <img src="img/dominadas.jpg" alt="Dominadas en BLOC" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/bicepsscot.jpg" alt="Curl Scott" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/elevacioondecaderas.jpg" alt="Hip thrust" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img//mancuernas.jpg" alt="Mancuernas" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img//militar.jpg" alt="Press militar" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img//prensa.jpg" alt="Prensa de piernas" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img//remo.jpg" alt="Remo" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img//sentadillas.jpg" alt="Sentadillas con TRX" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img//trx.jpg" alt="Entrenamiento TRX" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/maquinadeespalda.jpg" alt="Máquina de espalda RHINO" loading="lazy">
                 </div>
             </div>
-        </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="planes" class="pricing">
+    <!-- PLANES -->
+    <section id="planes" class="section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Planes y Precios</h2>
-                <p class="section-subtitle">Elegí el plan que mejor se adapte a tu ritmo</p>
+                <p class="section-subtitle">Elegí el plan que mejor se adapte a vos</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3 class="pricing-title">Mensual</h3>
+                    <h3 class="pricing-title">Plan Mensual</h3>
                     <div class="pricing-price">
-                        <span class="currency">$</span>
-                        <span class="amount">35.000</span>
-                        <span class="period">/mes</span>
+
+
+
                     </div>
                     <ul class="pricing-features">
-                        <li>✓ Acceso ilimitado al gimnasio</li>
-                        <li>✓ Rutina personalizada</li>
-                        <li>✓ Seguimiento semanal</li>
-                        <li>✓ Todas las clases grupales</li>
+                        <li>✓ Acceso ilimitado al gym</li>
+                        <li>✓ Todos los servicios incluidos</li>
+                        <li>✓ Supervisión profesional</li>
+                        <li>✓ Sin permanencia mínima</li>
                     </ul>
-                    <a href="#contacto" class="btn btn-pricing">Elegir Plan</a>
+                    <a href="#contacto" class="btn btn-secondary btn-block">Consultar Precio</a>
                 </div>
+
                 <div class="pricing-card pricing-featured">
                     <div class="pricing-badge">MÁS POPULAR</div>
-                    <h3 class="pricing-title">Trimestral</h3>
+                    <h3 class="pricing-title">Plan 3 Meses</h3>
                     <div class="pricing-price">
-                        <span class="currency">$</span>
-                        <span class="amount">90.000</span>
-                        <span class="period">/3 meses</span>
+
+
+
                     </div>
+                    <div class="pricing-discount">¡AHORRÁS 10%!</div>
                     <ul class="pricing-features">
                         <li>✓ Todo lo del plan mensual</li>
-                        <li>✓ Ahorrás $15.000</li>
-                        <li>✓ Plan nutricional básico</li>
-                        <li>✓ Evaluación física completa</li>
-                        <li>✓ Acceso a app exclusiva</li>
+                        <li>✓ <strong>10% de descuento</strong></li>
+                        <li>✓ Mejor relación precio/calidad</li>
+                        <li>✓ Pagás todo junto</li>
                     </ul>
-                    <a href="#contacto" class="btn btn-pricing">Elegir Plan</a>
+                    <a href="#contacto" class="btn btn-primary btn-block">Obtener Descuento</a>
                 </div>
+
                 <div class="pricing-card">
-                    <h3 class="pricing-title">Anual</h3>
+                    <h3 class="pricing-title">Clase de Prueba</h3>
                     <div class="pricing-price">
-                        <span class="currency">$</span>
-                        <span class="amount">300.000</span>
-                        <span class="period">/año</span>
+                        <span class="price-amount-large">GRATIS</span>
                     </div>
                     <ul class="pricing-features">
-                        <li>✓ Todo lo del plan trimestral</li>
-                        <li>✓ Ahorrás $120.000</li>
-                        <li>✓ Plan nutricional completo</li>
-                        <li>✓ 2 sesiones gratis de regalo</li>
-                        <li>✓ Prioridad en horarios</li>
+                        <li>✓ 1 clase de prueba sin cargo</li>
+                        <li>✓ Conocé las instalaciones</li>
+                        <li>✓ Hablá con los profes</li>
+                        <li>✓ Sin compromiso</li>
                     </ul>
-                    <a href="#contacto" class="btn btn-pricing">Elegir Plan</a>
+                    <a href="#contacto" class="btn btn-secondary btn-block">Reservar Clase</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Location & Contact Section -->
-    <section id="contacto" class="contact">
+    <!-- CONTACTO -->
+    <section id="contacto" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Visitanos</h2>
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-subtitle">¿Listo para empezar? Escribinos</p>
             </div>
             <div class="contact-grid">
-                <div class="contact-info-card">
-                    <div class="contact-icon">📍</div>
-                    <h4 class="contact-info-title">Dirección</h4>
-                    <p class="contact-info-text">Guido Spano 1086, esquina Av. San Martín<br>Rosario, Santa Fe</p>
+                <div class="contact-info">
+                    <h3>BLOC Gym</h3>
+                    <div class="contact-item">
+                        <strong>📱 WhatsApp:</strong>
+                        <a href="https://wa.me/5493412563609">+54 9 3412 56-3609</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍 Ubicación:</strong>
+                        <p>Guido Spano 1086, esquina Av. San Martín</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>⏰ Horarios:</strong>
+                        <p>Lunes a Viernes: de 7Hs a 21Hs<br>
+                            Sábados: de 9Hs a 12.30Hs<br>
+
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/5493412563609" class="social-btn" target="_blank">
+                            WhatsApp
+                        </a>
+                        <a href="https://instagram.com" class="social-btn" target="_blank">
+                            Instagram
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-info-card">
-                    <div class="contact-icon">🕐</div>
-                    <h4 class="contact-info-title">Horarios</h4>
-                    <p class="contact-info-text"><strong>Lunes a Viernes:</strong> 07:00 - 21:00
-                        hs<br><strong>Sábados:</strong> 09:00 - 12:30 hs</p>
-                </div>
-                <div class="contact-info-card">
-                    <div class="contact-icon">📱</div>
-                    <h4 class="contact-info-title">Contacto</h4>
-                    <p class="contact-info-text">
-                        WhatsApp: <a href="https://wa.me/5493413000000" target="_blank">+54 9 341 300-0000</a><br>
-                        Instagram: <a href="https://instagram.com/bloc.argentina" target="_blank">@bloc.argentina</a>
-                    </p>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Tu email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="telefono" name="telefono" placeholder="Tu teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Form Section -->
-    <section class="form-section">
-        <div class="container">
-            <div class="form-wrapper">
-                <div class="form-header">
-                    <h2 class="form-title">Empezá Tu Transformación</h2>
-                    <p class="form-subtitle">Completá el formulario y te contactamos en menos de 24hs. Primera clase
-                        gratis.</p>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
-                        </div>
-                        <div class="form-group">
-                            <select id="programa" name="programa" required>
-                                <option value="">Programa de interés</option>
-                                <option value="musculacion">Musculación</option>
-                                <option value="funcional">Funcional</option>
-                                <option value="personalizado">Personalizado</option>
-                                <option value="crossfit">CrossFit</option>
-                                <option value="hiit">HIIT</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="mensaje" name="mensaje" placeholder="Mensaje (opcional)" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-submit">Solicitar Clase Gratis</button>
-                    <p class="form-disclaimer">Al enviar este formulario aceptás nuestros términos y condiciones.</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col footer-about">
-                    <div class="footer-logo">
-                        <span class="logo-bloc">BLOC</span>
-                        <span class="logo-subtitle">GIMNASIO</span>
-                    </div>
-                    <p class="footer-description">Entrenamiento personalizado que transforma vidas desde 2020.</p>
+                <div class="footer-brand">
+                    <h3><span class="text-white">BL</span><span class="text-gold">OC</span></h3>
+                    <p>Transformá tu cuerpo, elevá tu nivel</p>
                 </div>
-
-                <div class="footer-col">
-                    <h4 class="footer-title">Navegación</h4>
-                    <ul class="footer-links">
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#programas">Programas</a></li>
-                        <li><a href="#entrenadores">Entrenadores</a></li>
-                        <li><a href="#planes">Planes</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <a href="#hero">Inicio</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#equipo">Equipo</a>
+                    <a href="#planes">Planes</a>
+                    <a href="#contacto">Contacto</a>
                 </div>
-
-                <div class="footer-col">
-                    <h4 class="footer-title">Horarios</h4>
-                    <div class="footer-schedule">
-                        <div class="schedule-item">
-                            <p class="schedule-days">Lunes a Viernes</p>
-                            <p class="schedule-time">07:00 - 21:00 hs</p>
-                        </div>
-                        <div class="schedule-item">
-                            <p class="schedule-days">Sábados</p>
-                            <p class="schedule-time">09:00 - 12:30 hs</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4 class="footer-title">Seguinos</h4>
-                    <ul class="footer-social">
-                        <li><a href="https://instagram.com/bloc.argentina" target="_blank">Instagram</a></li>
-                        <li><a href="https://facebook.com/blocgym" target="_blank">Facebook</a></li>
-                        <li><a href="https://wa.me/5493413000000" target="_blank">WhatsApp</a></li>
-                    </ul>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p>📱 3412563609</p>
+                    <p>📍Guido Spano 1086, esquina Av. San Martín</p>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>© 2024 BLOC Gimnasio. Todos los derechos reservados. | Rosario, Santa Fe, Argentina</p>
+                <p>&copy; 2026 BLOC Gym Rosario. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/5493412563609" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+        </svg>
+    </a>
 
     <script src="script.js"></script>
 </body>
