@@ -6,13 +6,13 @@
 }
 
 :root {
-  --gold: #f59e0b;
-  --black: #000000;
-  --orange: #ea580c;
-  --gray: #1f2937;
-  --gray-light: #f9fafb;
-  --gray-medium: #6b7280;
-  --gray-dark: #111827;
+  --gold: #ebdd18; /* Amarillo/dorado principal */
+  --black: #000000; /* Negro */
+  --yellow: #fbbf24; /* Amarillo más claro para hover */
+  --gray: #1f2937; /* Gris oscuro */
+  --gray-light: #f9fafb; /* Gris muy claro */
+  --gray-medium: #6b7280; /* Gris medio */
+  --gray-dark: #111827; /* Gris casi negro */
 }
 
 html {
