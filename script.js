@@ -7,7 +7,6 @@ hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
 });
 
-// Cerrar menú al hacer click en un link
 document.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("active");
@@ -15,7 +14,7 @@ document.querySelectorAll(".nav-link").forEach((link) => {
   });
 });
 
-// NAVBAR TRANSPARENTE AL SCROLL
+// NAVBAR CON SCROLL
 const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
@@ -37,22 +36,18 @@ contactForm.addEventListener("submit", (e) => {
   const telefono = document.getElementById("telefono").value;
   const mensaje = document.getElementById("mensaje").value;
 
-  // Crear mensaje para WhatsApp
-  const textoWhatsApp = `Hola! Mi nombre es ${nombre}.%0A%0AEmail: ${email}%0ATel: ${telefono}%0A%0AMensaje: ${mensaje}`;
+  const textoWhatsApp = `Hola! Soy ${nombre}.%0A%0A📧 Email: ${email}%0A📱 Tel: ${telefono}%0A%0A💬 Mensaje: ${mensaje}`;
 
-  // Abrir WhatsApp con el mensaje
   window.open(`https://wa.me/5493412563609?text=${textoWhatsApp}`, "_blank");
 
-  // Limpiar formulario
   contactForm.reset();
 
-  // Mostrar alerta
   alert(
-    "¡Gracias! Te estamos redirigiendo a WhatsApp para completar tu consulta."
+    "¡Perfecto! Te estamos redirigiendo a WhatsApp para confirmar tu clase gratis 🎉",
   );
 });
 
-// SMOOTH SCROLL PARA TODOS LOS LINKS
+// SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -65,6 +60,54 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
+
+// ANIMACIÓN DE CONTEO DE NÚMEROS EN STATS
+function animateNumbers() {
+  const statNumbers = document.querySelectorAll(".stat-number");
+
+  statNumbers.forEach((stat) => {
+    const target = parseInt(stat.getAttribute("data-target"));
+    const isPercent = stat.classList.contains("stat-percent");
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const updateCount = () => {
+      current += increment;
+
+      if (current < target) {
+        stat.textContent = Math.floor(current) + (isPercent ? "%" : "");
+        stat.classList.add("counting");
+        requestAnimationFrame(updateCount);
+      } else {
+        stat.textContent = target + (isPercent ? "%" : "");
+        stat.classList.remove("counting");
+      }
+    };
+
+    updateCount();
+  });
+}
+
+// Observador para stats
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateNumbers();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  },
+);
+
+const heroStats = document.querySelector(".hero-stats");
+if (heroStats) {
+  statsObserver.observe(heroStats);
+}
 
 // ANIMACIONES AL SCROLL
 const observerOptions = {
@@ -81,9 +124,10 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observar todas las cards
 document
-  .querySelectorAll(".card, .team-card, .pricing-card, .gallery-item")
+  .querySelectorAll(
+    ".card, .team-card, .pricing-card, .gallery-item, .benefit-card, .testimonial-card",
+  )
   .forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(30px)";
@@ -108,54 +152,3 @@ document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
 });
 
 console.log("🏋️ BLOC Gym - Website cargado correctamente");
-// ========================================
-// ANIMACIÓN DE CONTEO DE NÚMEROS EN STATS
-// ========================================
-
-function animateNumbers() {
-  const statNumbers = document.querySelectorAll(".stat-number");
-
-  statNumbers.forEach((stat) => {
-    const target = parseInt(stat.getAttribute("data-target"));
-    const isPercent = stat.classList.contains("stat-percent");
-    const duration = 2000; // 2 segundos
-    const increment = target / (duration / 16); // 60fps
-    let current = 0;
-
-    const updateCount = () => {
-      current += increment;
-
-      if (current < target) {
-        stat.textContent = Math.floor(current) + (isPercent ? "%" : "");
-        stat.classList.add("counting");
-        requestAnimationFrame(updateCount);
-      } else {
-        stat.textContent = target + (isPercent ? "%" : "");
-        stat.classList.remove("counting");
-      }
-    };
-
-    updateCount();
-  });
-}
-
-// Iniciar animación cuando el usuario llega a los stats
-const statsObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateNumbers();
-        statsObserver.unobserve(entry.target); // Solo animar una vez
-      }
-    });
-  },
-  {
-    threshold: 0.5, // Activar cuando el 50% de los stats sean visibles
-  }
-);
-
-// Observar la sección de stats
-const heroStats = document.querySelector(".hero-stats");
-if (heroStats) {
-  statsObserver.observe(heroStats);
-}
